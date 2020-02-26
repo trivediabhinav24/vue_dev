@@ -14,7 +14,7 @@ class QuestionsController extends Controller
      */
     public function index(Question $questions)
     {
-        $questions = $questions::latest()->paginate(5);
+        $questions = $questions::with('user')->latest()->paginate(5);
         // dd($questions);
         return view('questions.index', compact('questions'));
     }
